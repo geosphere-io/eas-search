@@ -177,7 +177,7 @@ he icon properties using Mapbox Maki icons replaced with leaflet code*/
             'relocate': 'g'
         }
         incidentLayer.setGeoJSON(incidentGeoJson).eachLayer(function (layer) {
-          var iconUrl = './gfx/img_markers_' + layer.feature.properties.category + '_' + actionMapping[layer.feature.properties.action.trim()] + '.png'
+          var iconUrl = './gfx/img_markers_transit_r.png'
           layer.setIcon(L.icon({
             iconUrl: iconUrl,
             iconSize: [40, 40],
@@ -195,13 +195,14 @@ he icon properties using Mapbox Maki icons replaced with leaflet code*/
     }
 
     function _buildPopupContent(properties) {
-        var newDate = properties.date
+        /*var newDate = properties.date
         var formattedDate = newDate.slice(5,7) + "/" + newDate.slice(8, 10) + "/" + newDate.slice(0,4)
         var content = '<h1>Resolution ' + properties.resolution_numbers + ' ' + properties.resolution_letter + '</h1>'
         content += '<p>' + formattedDate + '</p>'
         content += '<p>' + properties.action + ' - ' + properties.type + ': ' + properties.description + '</p>'
         content += '<p><a href="https://sfmta.xtreet.org/docs/sfmta/' + properties.pdf + '" target="_blank">Board meeting minutes (PDF)</a></p>'
-        content += '<p><a href="' + properties.video + '" target="_blank">Board meeting video</a></p>'
+        content += '<p><a href="' + properties.video + '" target="_blank">Board meeting video</a></p>'*/
+        content = properties.address
         return content
     }
 

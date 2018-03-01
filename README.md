@@ -120,3 +120,13 @@ APIs for maps, geocoding, driving directions, and more"
 [noUiSlider](https://refreshless.com/nouislider/) – "JavaScript Range Slider"
 
 
+## Reuse on other data
+
+Quick and dirty instructions on redeploying:
+
+1. Get the API endpoint from the dataset you want to query with a map interface
+2. Edit /js/services/endpoints.js and change INCIDENTS_API_JSON_URL, INCIDENTS_API_GEOJSON_URL, INCIDENTS_API_CSV_URL to the relevant endpoints and formats from step 1
+3. If your data doesn't have date or times, remove the time period params from /js/services/incidentService.js
+4. Swap in icons in js/modules/map.js
+5. Change the data loaded to the table from the source in js/modules/table.js
+

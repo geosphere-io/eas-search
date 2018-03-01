@@ -3,10 +3,8 @@ var incidentService = (function(window, $) {
     var INCIDENTS_API_JSON_URL = resourceEndpointsModule.INCIDENTS_API_JSON_URL;
 
     function _findMostRecentIncident(callback) {
-        var query = "?$select=date"
+        var query = "?$select=*"
           + "&$limit=1"
-          + "&$order=date DESC"
-          + "&$where=date IS NOT NULL";
 
         $.get(INCIDENTS_API_JSON_URL + query, function(data) {
             callback(data[0]);
@@ -20,11 +18,7 @@ var incidentService = (function(window, $) {
 
     function _buildAllDataQuery(params) {
         return "?$select=*"
-          + "&$where="
-          + "date >= '" + params.startDate + "'"
-          + " AND date <= '" + params.endDate + "'"
-          + "&$order=date DESC"
-          + "&$limit=100000";
+          + "&$limit=10000";
     }
 
     function _findIncidentsWithPolygonSearch(searchParams, callback) {
@@ -37,11 +31,8 @@ var incidentService = (function(window, $) {
 
         return "?$select=*"
           + "&$where="
-          + "date >= '" + params.startDate + "'"
-          + " AND date <= '" + params.endDate + "'"
-          + " AND within_polygon(location, \'" + wellKnownTextPolygon + "\')"
-          + "&$order=date DESC"
-          + "&$limit=100000";
+          + " within_polygon(location, \'" + wellKnownTextPolygon + "\')"
+          + "&$limit=10000";
     }
 
     function _buildWellKnownTextFromGeoJson(geoJson) {
@@ -60,11 +51,8 @@ var incidentService = (function(window, $) {
     function _buildRadialIncidentDataQuery(params) {
         return "?$select=*"
           + "&$where="
-          + "date >= '" + params.startDate + "'"
-          + " AND date <= '" + params.endDate + "'"
-          + " AND within_circle(location," +  params.latitude + "," + params.longitude + "," + params.searchRadius + ")"
-          + "&$order=date DESC"
-          + "&$limit=100000";
+          + " within_circle(location," +  params.latitude + "," + params.longitude + "," + params.searchRadius + ")"
+          + "&$limit=10000";
     }
 
     return {

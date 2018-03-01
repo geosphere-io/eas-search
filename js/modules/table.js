@@ -15,41 +15,9 @@ var tableModule = (function(window, $) {
             footer: true
         },
         columns: [{
-            data: "date",
-            title: "Date",
-            name: "date",
-            render: function(data, type, row, meta) {
-                return moment(data).format('l')
-            }
-        }, {
-            data: "action",
-            title: "Action",
-            name: "action",
-            render: function(data, type, row, meta) {
-                return data.trim()
-            }
-        }, {
-            data: "resolution_numbers",
-            title: "Resolution Number",
-            name: "resolution_numbers"
-        }, {
-            data: "resolution_letter",
-            title: "Resolution Letter",
-            name: "resolution_letter"
-        }, {
-            className: "mobile",
-            data: "category",
-            title: "Category",
-            name: "category",
-        }, {
-            className: "mobile tablet",
-            data: "type",
-            title: "Type",
-            name: "type",
-        }, {
-            data: "description",
-            title: "Description",
-            name: "description",
+            data: "address",
+            title: "Address",
+            name: "address",
         }],
         pageLength: 50,
         footerCallback: function(tfoot, data, start, end, display) {
